@@ -1,0 +1,13 @@
+# Local environment
+.env
+.env.*
+
+# PHP and editor files
+vendor/
+.idea/
+.vscode/
+*.log
+
+# Local database/runtime files
+database/*.sql.bak
+uploads/
