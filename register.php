@@ -7,14 +7,9 @@ if (!empty($_SESSION['user_id'])) { header('Location: index.php'); exit; }
 $error = '';
 $name = '';
 $email = '';
-$stmt = $pdo->query('SELECT COUNT(*) FROM users');
-$registrationOpen = (int)$stmt->fetchColumn() === 0;
+$registrationOpen = true;
 
-if (!$registrationOpen) {
-    // Registration is intentionally limited to the first administrator account.
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $registrationOpen) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
     $name = trim((string)($_POST['name'] ?? ''));
     $email = mb_strtolower(trim((string)($_POST['email'] ?? '')));
@@ -31,27 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $registrationOpen) {
         $error = 'Пароли не совпадают.';
     } else {
         try {
-            $lock = (int)$pdo->query("SELECT GET_LOCK('devpanel_first_account', 5)")->fetchColumn();
-            if ($lock !== 1) {
-                throw new RuntimeException('Не удалось открыть регистрацию. Попробуйте ещё раз.');
-            }
-            $stillOpen = (int)$pdo->query('SELECT COUNT(*) FROM users')->fetchColumn() === 0;
-            if (!$stillOpen) {
-                $registrationOpen = false;
-            } else {
-                $insert = $pdo->prepare('INSERT INTO users (name,email,password) VALUES (?,?,?)');
-                $insert->execute([$name, $email, password_hash($password, PASSWORD_DEFAULT)]);
-                session_regenerate_id(true);
-                $_SESSION['user_id'] = (int)$pdo->lastInsertId();
-                $_SESSION['user_name'] = $name;
-                header('Location: index.php'); exit;
-            }
+            $insert = $pdo->prepare('INSERT INTO users (name,email,password) VALUES (?,?,?)');
+            $insert->execute([$name, $email, password_hash($password, PASSWORD_DEFAULT)]);
+            session_regenerate_id(true);
+            $_SESSION['user_id'] = (int)$pdo->lastInsertId();
+            $_SESSION['user_name'] = $name;
+            header('Location: index.php'); exit;
         } catch (PDOException $exception) {
             $error = $exception->getCode() === '23000' ? 'Этот email уже зарегистрирован.' : 'Не удалось создать аккаунт. Проверьте работу MySQL и попробуйте снова.';
-        } catch (RuntimeException $exception) {
-            $error = $exception->getMessage();
-        } finally {
-            $pdo->query("SELECT RELEASE_LOCK('devpanel_first_account')");
         }
     }
 }
