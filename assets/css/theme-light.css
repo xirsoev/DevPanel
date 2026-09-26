@@ -20,7 +20,7 @@ body{background:#f4f7fb;color:var(--text)}
 @media(max-width:700px){.project-details-page{padding:20px 14px 32px}.project-details-page .page-header{display:block}.project-details-page .page-header h1{font-size:24px}.project-header-actions{margin-top:12px}.project-details-grid{grid-template-columns:1fr;gap:12px}.details-card,.project-tasks-section{padding:17px}.task-summary{grid-template-columns:repeat(2,1fr)}.task-item{grid-template-columns:24px minmax(0,1fr) auto;gap:8px}.task-priority,.task-date{display:none}.project-tasks-section .section-heading a{display:none}}
 
 /* Телефонная раскладка: нижняя навигация, удобные отступы и touch-targets */
-@media (max-width:700px){
+@media (max-width:1100px){
     html{overflow-x:hidden}
     body{overflow-x:hidden;-webkit-tap-highlight-color:transparent}
     .app{display:block;min-height:100vh}
