@@ -39,3 +39,16 @@
     .auth-foot{font-size:11px;line-height:1.5}
 }
 @media(prefers-reduced-motion:reduce){.auth-page,.auth-submit{animation:none!important;transition:none!important}}
+
+/* Крупная и удобная форма на всех экранах */
+.auth-card{padding:42px;max-width:500px}
+.auth-brand{font-size:21px}.auth-card h1{font-size:30px}.auth-subtitle{font-size:15px;line-height:1.55}
+.auth-card form label{font-size:14px;margin:19px 0}
+.auth-card form label>input,.password-wrap>input{height:52px;font-size:16px;border-radius:9px}
+.auth-submit{min-height:52px;font-size:15px;border-radius:9px}.auth-foot{font-size:13px}
+@media(max-width:600px){
+    .auth-page{min-height:100svh;padding:16px 12px;align-items:start}
+    .auth-card{width:100%;max-width:500px;padding:30px 20px;margin:auto;border-radius:15px}
+    .auth-brand{font-size:19px;margin-bottom:30px}.auth-card h1{font-size:26px}.auth-subtitle{font-size:14px}
+    .auth-card form label{font-size:13px;margin:16px 0}.auth-submit{min-height:52px;font-size:14px}
+}
