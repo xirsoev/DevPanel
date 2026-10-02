@@ -214,8 +214,8 @@ function timeAgo(string $date): string
 
     <title>DevPanel — Обзор</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/theme-light.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=20261002">
+    <link rel="stylesheet" href="assets/css/theme-light.css?v=20261002">
 </head>
 
 <body>

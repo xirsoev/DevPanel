@@ -142,8 +142,8 @@ function priorityLabel(string $priority): string
         <?= htmlspecialchars($project['name']) ?> — DevPanel
     </title>
 
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/theme-light.css">
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20261002">
+    <link rel="stylesheet" href="../../assets/css/theme-light.css?v=20261002">
 
 </head>
 
