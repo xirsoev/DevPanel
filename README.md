@@ -6,7 +6,7 @@
 
 Панель управления, которая помогает собрать текущую работу в одном месте и быстро увидеть, что происходит.
 
-[Открыть репозиторий ↗](https://github.com/xirsoev/DevPanel)
+[Открыть сайт ↗](https://devpanel.kesug.com) · [Исходный код ↗](https://github.com/xirsoev/DevPanel)
 
 </div>
 
